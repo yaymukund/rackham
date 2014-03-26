@@ -1,5 +1,6 @@
 export default Ember.Route.extend({
-  model: function() {
-    return ['red', 'yellow', 'blue'];
+  beforeModel: function() {
+    var room = this.store.find('room', 1);
+    this.transitionTo('room', room));
   }
 });

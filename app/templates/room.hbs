@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+
+{{view MusicRoom.UploadMp3View}}
+
+{{music-file room=content track=currentTrack}}
+
+{{#unless currentTrack}}
+  <h2>It looks like nothing's playing right now.</h2>
+{{/unless}}
+
+{{render 'tracks'}}
