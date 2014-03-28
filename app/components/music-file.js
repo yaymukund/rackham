@@ -1,3 +1,5 @@
+import Whistler from 'rackham/utils/whistler';
+
 export default Ember.Component.extend({
   reloadPlayer: function() {
     var self = this;
