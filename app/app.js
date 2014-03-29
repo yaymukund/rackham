@@ -10,4 +10,15 @@ var App = Ember.Application.extend({
   Resolver: Resolver['default']
 });
 
+App.initializer({
+  name: 'injectPresto',
+
+  initialize: function(container, application) {
+    App.presto = Presto.create({
+      bucketUrl: $('meta[name=bucket-path]').attr('content'),
+      policyUrl: $('meta[name=policy-path]').attr('content')
+    });
+  }
+});
+
 export default App;
