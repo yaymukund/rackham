@@ -5,7 +5,7 @@
 // - Reload the player when the track URL changes.
 // - Fire a `new_track` event when the Whistle server says that everyone's
 //   ready to move to the next track.
-var Whistler = (function(io, $) {
+export default (function(io, $) {
   var SOCKET_OPTIONS = {'force new connection': true},
       WHISTLER_URL = null,
       socket = null,
@@ -33,7 +33,7 @@ var Whistler = (function(io, $) {
     });
 
     $audio.one('loadedmetadata', function() {
-      boundIntervalId = _listenForProgress($audio, socket);
+      _listenForProgress($audio, socket);
     });
 
     $audio.on('ended', function() {

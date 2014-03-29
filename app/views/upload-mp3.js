@@ -1,3 +1,5 @@
+import App from 'rackham/app';
+
 export default Ember.TextField.extend({
   type: 'file',
   attributeBinding: ['name'],
@@ -10,7 +12,7 @@ export default Ember.TextField.extend({
     this.set('disabled', true);
 
     Ember.RSVP.hash({
-      postResponse: MusicRoom.presto.uploadFile(file),
+      postResponse: App.presto.uploadFile(file),
       metadata: parseMetadata(file)
 
     }).then(function(results) {
