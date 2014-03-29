@@ -1,5 +1,4 @@
 import App from 'rackham/app';
-import Presto from 'presto';
 
 App.initializer({
   name: 'injectPresto',

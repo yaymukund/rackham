@@ -10,5 +10,4 @@ var App = Ember.Application.extend({
   Resolver: Resolver['default']
 });
 
-import 'rackham/initializers/presto';
 export default App;

@@ -31,6 +31,6 @@
     "broccoli-env": "0.0.1"
   },
   "dependencies": {
-    "ember-cli": "0.0.18"
+    "ember-cli": "0.0.x"
   }
 }
