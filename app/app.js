@@ -1,4 +1,5 @@
 import Resolver from 'ember/resolver';
+import 'rackham/initializers/presto';
 
 var App = Ember.Application.extend({
   LOG_ACTIVE_GENERATION: true,
@@ -8,17 +9,6 @@ var App = Ember.Application.extend({
   LOG_VIEW_LOOKUPS: true,
   modulePrefix: 'rackham', // TODO: loaded via config
   Resolver: Resolver['default']
-});
-
-App.initializer({
-  name: 'injectPresto',
-
-  initialize: function(container, application) {
-    App.presto = Presto.create({
-      bucketUrl: $('meta[name=bucket-path]').attr('content'),
-      policyUrl: $('meta[name=policy-path]').attr('content')
-    });
-  }
 });
 
 export default App;

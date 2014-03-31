@@ -1,18 +1,21 @@
 import App from 'rackham/app';
+import Presto from 'presto';
 
-export default Ember.TextField.extend({
-  type: 'file',
-  attributeBinding: ['name'],
-  action: 'createTrack',
-  upload: function(evt) {
+export default Ember.View.extend({
+  templateName: 'mp3-upload',
+  isDisabled: Ember.computed.alias('upload.isPending'),
+
+  uploadTrack: function(evt) {
+    window.view = this;
     var input = evt.target,
         file = (input.files && input.files[0]),
         self = this;
 
-    this.set('disabled', true);
+    var upload = Presto.upload(file);
+    this.set('upload', upload);
 
     Ember.RSVP.hash({
-      postResponse: App.presto.uploadFile(file),
+      postResponse: upload,
       metadata: parseMetadata(file)
 
     }).then(function(results) {
@@ -27,7 +30,9 @@ export default Ember.TextField.extend({
 
       self.get('parentView.controller').send('createTrack', attributes);
       input.value = '';
-      self.set('disabled', false);
+    }).catch(function(error) {
+      // Do something better;
+      throw error;
     });
 
   }.on('change')
