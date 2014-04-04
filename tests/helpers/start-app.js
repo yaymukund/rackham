@@ -1,5 +1,4 @@
-import Application from 'rackham/app';
-import Router from 'rackham/router';
+var Router = require('rackham/router')['default'];
 
 function startApp(attrs) {
   var App;
@@ -16,7 +15,7 @@ function startApp(attrs) {
   });
 
   Ember.run(function(){
-    App = Application.create(attributes);
+    App = require('rackham/main')['default']('rackham', attributes);
     App.setupForTesting();
     App.injectTestHelpers();
   });

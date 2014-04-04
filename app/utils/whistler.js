@@ -14,7 +14,7 @@ export default (function(io, $) {
 
   exports.bindTo = function(roomId, $_audio) {
     if (!WHISTLER_URL) {
-      WHISTLER_URL = $('meta[name=whistle-path]').attr('content');
+      WHISTLER_URL = ENV.whistlePath;
     }
 
     $audio = $_audio;

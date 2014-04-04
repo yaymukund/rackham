@@ -2,8 +2,8 @@ document.write('<div id="ember-testing-container"><div id="ember-testing"></div>
 
 Ember.testing = true;
 
-window.startApp          = require('rackham/tests/helpers/start_app')['default'];
-window.isolatedContainer = require('rackham/tests/helpers/isolated_container')['default'];
+import resolver from './helpers/resolver';
+require('ember-qunit').setResolver(resolver);
 
 function exists(selector) {
   return !!find(selector).length;

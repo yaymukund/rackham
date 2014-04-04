@@ -1,5 +1,6 @@
 import App from 'rackham/app';
 import Presto from 'presto';
+import 'id3';
 
 export default Ember.View.extend({
   templateName: 'mp3-upload',
