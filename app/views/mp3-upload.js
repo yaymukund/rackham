@@ -6,13 +6,12 @@ export default Ember.View.extend({
   isDisabled: Ember.computed.alias('upload.isPending'),
 
   uploadTrack: function(evt) {
-    window.view = this;
     var input = evt.target,
         file = (input.files && input.files[0]),
         self = this;
 
     var upload = Presto.upload(file);
-    this.set('upload', upload);
+    self.set('upload', upload);
 
     Ember.RSVP.hash({
       postResponse: upload,
@@ -20,22 +19,26 @@ export default Ember.View.extend({
 
     }).then(function(results) {
       var $postResponse = $(results.postResponse),
-          filepath = $postResponse.find('PostResponse > Location').text(),
-          attributes = {
-            url: filepath,
-            title: results.metadata.title,
-            artist: results.metadata.artist,
-            album: results.metadata.album
-          };
+          filepath = $postResponse.find('PostResponse > Location').text();
 
-      self.get('parentView.controller').send('createTrack', attributes);
+      self.createTrack(filepath, results.metadata);
       input.value = '';
+
     }).catch(function(error) {
       // Do something better;
       throw error;
     });
 
-  }.on('change')
+  }.on('change'),
+
+  createTrack: function(filepath, metadata) {
+    this.get('parentView.controller').send('createTrack', {
+      url: filepath,
+      title: metadata.title,
+      artist: metadata.artist,
+      album: metadata.album
+    });
+  }
 });
 
 var parseMetadata = function(file) {

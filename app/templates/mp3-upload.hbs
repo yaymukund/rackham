@@ -1,1 +1,5 @@
 <input type="file" {{bind-attr disabled=view.isDisabled}}></input>
+
+{{#if view.upload.isPending}}
+  <progress max="100" {{bind-attr value=view.upload.progress}}></progress>
+{{/if}}
