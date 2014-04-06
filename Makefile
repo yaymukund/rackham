@@ -1,4 +1,7 @@
-.PHONY: build watch
+.PHONY: build watch all
+
+all:
+	ember server --proxy-port 3000
 
 build:
 	zsh scripts/build.sh
