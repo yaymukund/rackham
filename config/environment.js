@@ -17,5 +17,7 @@ module.exports = function(environment) {
     ENV.whistlePath = 'http://whistle-server.herokuapp.com';
   }
 
+  ENV.socketIOUrl = ENV.whistlePath+'/socket.io/socket.io.js';
+
   return JSON.stringify(ENV); // Set in index.html
 };

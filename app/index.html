@@ -10,10 +10,10 @@
     <script>
       window.ENV = {{ENV}};
       document.write('<base href="' + document.location.origin + ENV.rootURL + '" />');
+      document.write('<script src="'+ENV.socketIOUrl+'"><\/script>');
     </script>
 
     <link rel="stylesheet" href="assets/app.css">
-    <script src="http://localhost:3001/socket.io/socket.io.js"></script>
     <script src="/assets/app.js"></script>
   </head>
   <body>
