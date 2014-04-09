@@ -7,13 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script>
-      window.ENV = {{ENV}};
-      document.write('<base href="'+ENV.rootURL+'" />');
-      document.write('<script src="'+ENV.socketIOUrl+'"><\/script>');
-    </script>
-
     <link rel="stylesheet" href="assets/app.css">
+    <script src="/assets/env.js"></script>
     <script src="/assets/app.js"></script>
   </head>
   <body>
