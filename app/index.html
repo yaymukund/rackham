@@ -9,7 +9,7 @@
 
     <script>
       window.ENV = {{ENV}};
-      document.write('<base href="' + document.location.origin + ENV.rootURL + '" />');
+      document.write('<base href="'+ENV.rootURL+'" />');
       document.write('<script src="'+ENV.socketIOUrl+'"><\/script>');
     </script>
 
