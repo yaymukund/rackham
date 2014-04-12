@@ -95,7 +95,7 @@ module.exports = function (broccoli) {
 
   // Styles
 
-  var styles = preprocessCss(appAndDependencies, prefix + '/styles', '/assets');
+  var styles = preprocessCss(sourceTrees, prefix + '/styles', '/assets');
 
   // Ouput
 

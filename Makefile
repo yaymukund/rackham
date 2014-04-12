@@ -10,4 +10,4 @@ development:
 	zsh scripts/build.sh development
 
 watch:
-	node_modules/nodemon/bin/nodemon.js --exec "make build" -e "scss js hbs" -w app
+	node_modules/nodemon/bin/nodemon.js --exec "make production" -e "scss js hbs" -w app

@@ -1,0 +1,25 @@
+html { font-size: 62.5%; }
+
+@mixin track {
+  color: white;
+  .title { font-style: italic; }
+  .artist {
+    font-style: italic;
+    font-weight: bold;
+  }
+}
+
+body {
+  font-family: 'Lora', serif;
+}
+
+.current-track {
+  @include track;
+  font-size: 2.4rem;
+}
+
+.tracks ol > li {
+  @include track;
+  font-size: 1.8rem;
+  .by { color: #9d87a4; }
+}

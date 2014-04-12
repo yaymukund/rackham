@@ -1,11 +1,13 @@
-<h2>Upcoming Songs</h2>
-
-<ol class="tracks">
-  {{#each}}
-  <li {{bind-attr class="hasPlayed"}}>
-      {{#if isPlaying}}&rarr;{{/if}}
-      {{title}}
-      {{#if playedAt}}Played at {{playedAt}}{{/if}}
-    </li>
-  {{/each}}
-</ol>
+<div class="tracks">
+  <ol>
+    {{#each}}
+      <li {{bind-attr class="hasPlayed isPlaying"}}>
+        {{partial "track"}}
+        {{#if playedAt}}
+          <p class="played-at">Played <time>{{relative-date playedAt}}</time></p>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ol>
+  <div class="gradient"></div>
+</div>

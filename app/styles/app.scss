@@ -1,0 +1,76 @@
+@import 'mixins';
+@import 'normalize';
+@import 'fonts';
+
+@mixin no-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin replace-image($url, $height, $width) {
+  @include no-text;
+  background-image: url($url);
+  background-repeat: no-repeat;
+  display: block;
+  height: $height;
+  width: $width;
+}
+
+body {
+  background-color: #413445;
+}
+
+header {
+  @include gradient(#5d495f 90px, #413445 62px);
+  display: block;
+  height: 149px;
+  width: 100vw;
+  padding: 8px 0 2rem 1rem;
+
+  #logo {
+    margin: 0;
+    @include replace-image('/images/logo.gif', 148px, 149px);
+  }
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3rem;
+}
+
+.current-track { width: 100vw; }
+
+.playlist {
+  display: flex;
+
+  img {
+    margin-top: 1rem;
+    width: 300px;
+    height: 300px;
+  }
+
+  .tracks {
+    ol {
+      padding-left: 0;
+      list-style-type: none;
+      margin-bottom: 0;
+
+      li {
+        &:nth-child(odd) { background-color: #2b222e; }
+        &:nth-child(even) { background-color: #413445; }
+        width: 38rem;
+
+        padding: 1rem 2rem;
+        border-left: 15px solid #5d495f;
+      }
+    }
+
+    .gradient {
+      @include gradient(#2b222e 0%, transparent);
+      opacity: 0.5;
+      height: 5rem;
+    }
+  }
+}

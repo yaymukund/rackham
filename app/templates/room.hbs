@@ -1,11 +1,15 @@
-<h1>{{title}}</h1>
+{{! view 'mp3-upload'}}
 
-{{view 'mp3-upload'}}
+<div class="room">
+  {{music-file room=content track=currentTrack}}
 
-{{music-file room=content track=currentTrack}}
+  {{#with currentTrack}}
+    <div class="current-track">
+      {{partial "track"}}
+    </div>
+  {{/with}}
 
-{{#unless currentTrack}}
-  <h2>It looks like nothing's playing right now.</h2>
-{{/unless}}
-
-{{render 'tracks'}}
+  <div class="playlist">
+    <img src="http://ecx.images-amazon.com/images/I/512BBWRFD6L._SY300_.jpg">
+    {{render 'tracks'}}
+</div>
