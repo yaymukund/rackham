@@ -1,11 +1,11 @@
-{{! view 'mp3-upload'}}
+{{ view 'mp3-upload'}}
 
 <div class="room">
   {{music-file room=content track=currentTrack}}
 
   {{#with currentTrack}}
     <div class="current-track">
-      {{partial "track"}}
+      {{partial 'track'}}
     </div>
   {{/with}}
 

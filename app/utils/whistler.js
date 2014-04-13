@@ -5,53 +5,57 @@
 // - Reload the player when the track URL changes.
 // - Fire a `new_track` event when the Whistle server says that everyone's
 //   ready to move to the next track.
-export default (function(io, $) {
-  var SOCKET_OPTIONS = {'force new connection': true},
-      WHISTLER_URL = null,
-      socket = null,
-      $audio = null,
-      exports = {};
+var whistlers = {},
+    SOCKET_OPTIONS = {
+      'force new connection': true
+    };
 
-  exports.bindTo = function(roomId, $_audio) {
-    if (!WHISTLER_URL) {
-      WHISTLER_URL = ENV.whistlePath;
-    }
+var Whistler = Ember.Object.extend(Ember.Evented, {
+  roomId: null,
+  '$audio': null,
 
-    $audio = $_audio;
-    socket = io.connect(WHISTLER_URL, SOCKET_OPTIONS);
+  init: function() {
+    this._super();
 
-    socket.emit('join_room', roomId);
+    var socket = io.connect(ENV.whistlePath, SOCKET_OPTIONS),
+        $audio = this.get('$audio'),
+        self = this;
+
+    whistlers[self.get('roomId')] = self;
+
+    self.set('socket', socket);
+    socket.emit('join_room', self.get('roomId'));
+
+    socket.on('new_track', function() {
+      console.log('new track');
+      self.trigger('didReceiveTrack');
+    });
 
     socket.once('room_current_time', function(currentTime) {
-      console.log('whistler: room_current_time with currentTime', currentTime);
       $audio[0].currentTime = currentTime;
     });
 
     $audio.one('loadedmetadata', function() {
-      console.log('whistler: loadedmetadata');
       socket.emit('get_current_time');
     });
 
     $audio.one('loadedmetadata', function() {
-      _listenForProgress($audio, socket);
+      self.listenForProgress();
     });
 
     $audio.on('ended', function() {
-      console.log('whistler: ended');
       socket.emit('done_track');
     });
-  };
+  },
 
-  exports.changeSong = function(url) { _changeSong($audio, url); };
-  exports.on = function(event, fn) { socket.on(event, fn); };
-  exports.emit = function(event, content) {
-    socket.emit(event, content);
-  };
+  uploadedTrack: function() {
+    this.get('socket').emit('uploaded_track');
+  }.on('didUploadTrack'),
 
-  var _changeSong = function($audio, url) {
-    var $source = $audio.children('source');
+  changeSong: function(url) {
+    var $audio = this.get('$audio'),
+        $source = $audio.children('source');
 
-    console.log(url);
     if (!url || ($source.attr('src') === url)) {
       return;
     }
@@ -59,14 +63,21 @@ export default (function(io, $) {
     $source.attr('src', url);
     $audio[0].pause();
     $audio[0].load();
-  };
+  },
 
-  var _listenForProgress = function($audio, socket, ms) {
+  listenForProgress: function() {
+    var $audio = this.get('$audio'),
+        socket = this.get('socket');
+
     setInterval(function() {
       if ($audio[0].paused) { return; }
       socket.emit('progress', $audio[0].currentTime);
-    }, ms || 2000);
-  };
+    }, 2000);
+  }
+});
 
-  return exports;
-})(io, jQuery);
+Whistler.reopenClass({
+  find: function(roomId) { return whistlers[roomId]; }
+});
+
+export default Whistler;

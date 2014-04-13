@@ -6,20 +6,23 @@ export default Ember.Component.extend({
 
     Ember.run.once(function() {
       var url = self.get('track.url');
-      Whistler.changeSong(url);
+      self.get('whistler').changeSong(url);
     });
-
   }.observes('track.url'),
 
   setupWhistler: function() {
     var $audio = this.$('audio'),
-        self = this;
+        room = this.get('room'),
+        whistler = Whistler.create({
+          roomId: room.get('id'),
+          '$audio': $audio
+        });
 
-    Whistler.bindTo(this.get('room.id'), $audio);
+    this.set('whistler', whistler);
 
-    Whistler.on('new_track', function() {
+    whistler.on('didReceiveTrack', function() {
       Ember.run(function() {
-        self.get('room').reload();
+        room.reload();
       });
     });
   }.on('didInsertElement')
