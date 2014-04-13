@@ -5,9 +5,9 @@ export default Ember.Route.extend({
     createTrack: function(attributes) {
       var track = this.get('controller.tracks').createRecord(attributes);
 
-      track.save().then(function() {
-        var roomId = this.get('room.id');
-        Whistler.find(roomId).emit('uploaded_track');
+      track.save().then(function(track) {
+        var roomId = track.get('room.id');
+        Whistler.find(roomId).trigger('didUploadTrack');
       });
     }
   }
