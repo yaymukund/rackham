@@ -1,6 +1,6 @@
 var SOCKET_OPTIONS = { 'force new connection': true };
 
-export default Ember.Mixin.create({
+export default Ember.Mixin.create(Ember.Evented, {
   socket: null,
 
   connect: function(path) {
