@@ -1,9 +1,8 @@
-{{ view 'mp3-upload'}}
-
 <div class="room">
   {{music-file room=content track=currentTrack}}
 
   <div class="playlist">
     <img src="http://ecx.images-amazon.com/images/I/512BBWRFD6L._SY300_.jpg">
     {{render 'tracks'}}
+    {{ view 'mp3-upload'}}
 </div>
