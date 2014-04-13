@@ -1,5 +1,17 @@
-<audio class="player" autoplay controls>
+<div class="current-track">
+  {{#with track}}
+    {{partial 'track'}}
+  {{/with}}
+
+  {{#if whistler.hasTime}}
+    <span class="timestamp">
+      {{audio-timestamp whistler.currentTime}}/{{audio-timestamp whistler.duration}}
+    </span>
+  {{/if}}
+
+  <audio class="player">
     <!-- The component object takes care of updating sourceUrl. -->
     <source src="{{unbound track.url}}" type="{{unbound track.filetype}}">
     Your browser does not support the audio tag.
-</audio>
+  </audio>
+</div>

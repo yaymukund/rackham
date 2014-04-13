@@ -3,12 +3,6 @@
 <div class="room">
   {{music-file room=content track=currentTrack}}
 
-  {{#with currentTrack}}
-    <div class="current-track">
-      {{partial 'track'}}
-    </div>
-  {{/with}}
-
   <div class="playlist">
     <img src="http://ecx.images-amazon.com/images/I/512BBWRFD6L._SY300_.jpg">
     {{render 'tracks'}}

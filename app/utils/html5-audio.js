@@ -5,14 +5,19 @@ export default Ember.Object.extend(Ember.Evented, {
   isPlaying: false,
   isEnded: false,
   hasMetadata: false,
-  currentTime: 0,
+  currentTime: null,
+  duration: null,
+  hasDuration: Ember.computed.notEmpty('duration'),
+  hasCurrentTime: Ember.computed.notEmpty('currentTime'),
+  hasTime: Ember.computed.and('hasCurrentTime', 'hasDuration'),
 
   init: function() {
     this._super();
+
     var $audio = this.get('$audio'),
         self = this;
 
-    $.each(EVENT_NAMES, function(i, eventName) {
+    EVENT_NAMES.forEach(function(eventName) {
       $audio.bind(eventName, function() {
         self.trigger(eventName, $audio);
       });
@@ -20,6 +25,7 @@ export default Ember.Object.extend(Ember.Evented, {
   },
 
   setLoadedMetadata: function($audio) {
+    this.set('duration', $audio[0].duration);
     this.set('hasMetadata', true);
   }.on('loadedmetadata'),
 
@@ -33,7 +39,7 @@ export default Ember.Object.extend(Ember.Evented, {
     this.set('isEnded', false);
   }.on('playing'),
 
-  didTimeUpdate: function($audio) {
+  setCurrentTime: function($audio) {
     this.set('currentTime', $audio[0].currentTime);
   }.on('timeupdate'),
 
@@ -48,14 +54,15 @@ export default Ember.Object.extend(Ember.Evented, {
     this.set('hasMetadata', false);
     this.set('isPlaying', false);
     this.set('isEnded', true);
-    this.set('currentTime', 0);
+    this.set('currentTime', null);
+    this.set('duration', null);
 
     $source.attr('src', url);
     $audio[0].pause();
     $audio[0].load();
   },
 
-  setCurrentTime: function(currentTime) {
+  updateTime: function(currentTime) {
     this.get('$audio')[0].currentTime = currentTime;
   }
 });

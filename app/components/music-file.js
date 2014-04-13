@@ -20,7 +20,7 @@ export default Ember.Component.extend({
 
     this.set('whistler', whistler);
 
-    whistler.on('didReceiveTrack', function() {
+    whistler.on('new_track', function() {
       Ember.run(function() {
         room.reload();
       });

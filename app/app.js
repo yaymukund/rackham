@@ -1,5 +1,6 @@
 import Resolver from 'ember/resolver';
 import 'rackham/helpers/relative-date';
+import 'rackham/helpers/audio-timestamp';
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
 

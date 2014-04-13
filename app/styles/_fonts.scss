@@ -16,6 +16,12 @@ body {
 .current-track {
   @include track;
   font-size: 2.4rem;
+
+  .timestamp {
+    font-style: italic;
+    font-size: 1.8rem;
+    color: #ad98af;
+  }
 }
 
 .tracks ol > li {
