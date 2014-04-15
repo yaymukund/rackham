@@ -1,13 +1,13 @@
-<div class="tracks">
-  <ol>
-    {{#each}}
-      <li {{bind-attr class="hasPlayed isPlaying"}}>
-        {{partial "track"}}
-        {{#if playedAt}}
-          <p class="played-at">Played <time>{{relative-date playedAt}}</time></p>
-        {{/if}}
-      </li>
-    {{/each}}
-  </ol>
-  <div class="gradient"></div>
-</div>
+<table class="tracks">
+  <tr>
+    <th>Title</th>
+    <th>Artist</th>
+  </tr>
+
+  {{#each}}
+    <tr {{bind-attr class="hasPlayed isPlaying"}}>
+      <td>{{title}}</td>
+      <td>{{artist}}</td>
+    </tr>
+  {{/each}}
+</table>

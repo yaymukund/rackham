@@ -1,7 +1,7 @@
 .PHONY: watch all production development
 
 all:
-	ember server --proxy-port 3000
+	./node_modules/ember-cli/bin/ember server --proxy-port 3000
 
 production:
 	zsh scripts/build.sh production

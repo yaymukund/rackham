@@ -1,7 +1,37 @@
-@mixin gradient($from, $to) {
+@mixin linear-gradient($from, $to) {
   background-color: $from;
   background-image: -moz-linear-gradient($from, $to);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
   background-image: -webkit-linear-gradient($from, $to);
   background-image: -o-linear-gradient($from, $to);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+  -webkit-box-shadow:$top $left $blur $color #{$inset};
+  -moz-box-shadow:$top $left $blur $color #{$inset};
+  box-shadow:$top $left $blur $color #{$inset};
+}
+
+@mixin upload-button($bg-color, $shadow-color) {
+  @include box-shadow(0, 6px, 0, $shadow-color);
+  background-color: $bg-color;
+  border-radius: 0 0 5px 5px;
+  color: white;
+  transition: none;
+  cursor: pointer;
+  padding: 1.5rem 3rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  outline: none;
+  border: none;
+  position: relative;
+
+  &:hover { top: 0.2rem; }
+  &:active { top: 0.6rem; }
 }
