@@ -29,7 +29,6 @@ export default Ember.View.extend({
       // Do something better;
       throw error;
     });
-
   }.on('change'),
 
   createTrack: function(filepath, metadata) {
@@ -39,6 +38,10 @@ export default Ember.View.extend({
       artist: metadata.artist,
       album: metadata.album
     });
+  },
+
+  openInput: function() {
+    this.$('input[type="file"]').click();
   }
 });
 
