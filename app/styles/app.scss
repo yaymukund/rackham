@@ -47,19 +47,27 @@ header {
 
 .main {
   display: flex;
+  margin-top: 1rem;
 
   img {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 300px;
     height: 300px;
+    min-width: 300px;
+    min-height: 300px;
   }
 }
 
 .playlist {
-  margin-left: 1vw;
+  padding-left: 1vw;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-right: 3rem;
 }
 
 table.tracks {
+  width: 100%;
   tr {
     &:nth-child(odd) { background-color: #2b222e; }
     &:nth-child(even) { background-color: #413445; }
@@ -67,7 +75,6 @@ table.tracks {
     th { border: 1px solid #563c5e; }
 
     td, th {
-      width: 20rem;
       padding: 0.5rem 1rem;
     }
 

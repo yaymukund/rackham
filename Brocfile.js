@@ -96,6 +96,11 @@ module.exports = function (broccoli) {
   // Styles
 
   var styles = preprocessCss(sourceTrees, prefix + '/styles', '/assets');
+  var mobileStyles = pickFiles('app', {
+    srcDir: '/styles',
+    files: ['mobile.css'],
+    destDir: '/assets'
+  });
 
   // Ouput
 
@@ -104,7 +109,8 @@ module.exports = function (broccoli) {
     envJS,
     applicationJs,
     'public',
-    styles
+    styles,
+    mobileStyles
   ];
 
   // Testing
