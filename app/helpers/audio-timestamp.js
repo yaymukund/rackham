@@ -10,5 +10,6 @@ export default Ember.Handlebars.makeBoundHelper(function(seconds, options) {
     seconds = "0"+seconds;
   }
 
-  return minutes+':'+seconds;
+  var time = minutes+':'+seconds;
+  return new Ember.Handlebars.SafeString('<time>'+time+'</time>');
 });
