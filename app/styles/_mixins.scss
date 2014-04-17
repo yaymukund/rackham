@@ -46,8 +46,8 @@
   border: none;
   position: relative;
 
-  &:hover { top: 0.2rem; }
-  &:active { top: 0.6rem; }
+  &:hover:enabled { top: 0.2rem; }
+  &:active:enabled { top: 0.6rem; }
 }
 
 @mixin no-text {
