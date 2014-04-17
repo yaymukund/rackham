@@ -15,9 +15,6 @@ export default Ember.Route.extend({
       track.save().then(function(track) {
         var roomId = track.get('room.id');
         Whistler.find(roomId).trigger('didUploadTrack');
-        upload.resolve();
-      }).catch(function(error) {
-        upload.error();
       });
     }
   }
