@@ -1,8 +1,13 @@
 <input type="file"></input>
+
 <button {{action "openInput" target="view"}}
   {{bind-attr disabled=view.isDisabled}}
-  class="upload-track">Upload a track</button>
+  {{bind-attr class=":upload-track view.upload.isPending"}}>
 
-{{#if view.upload.isPending}}
-  <progress max="100" {{bind-attr value=view.upload.progress}}></progress>
-{{/if}}
+  <span class="text">Upload a track</span>
+
+  {{#if view.upload.isPending}}
+    <span {{bind-attr style=view.progressWidth}} class="upload-progress"></span>
+  {{/if}}
+</button>
+

@@ -1,0 +1,23 @@
+.upload-track.is-pending {
+  padding-right: 5rem;
+  @include transition(0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all);
+  &:after {
+    content: ' ';
+    height:20px;
+    width:20px;
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    @include animation(rotation .6s infinite linear);
+    border-left:6px solid rgba(182, 90, 225, .15);
+    border-right:6px solid rgba(182, 90, 225, .15);
+    border-bottom:6px solid rgba(182, 90, 225, .15);
+    border-top:6px solid rgba(182, 90, 225, .8);
+    border-radius:100%;
+  }
+}
+
+@include keyframes(rotation) {
+  from { @include transform(rotate(0deg)); }
+  to { @include transform(rotate(359deg)); }
+}
