@@ -1,0 +1,21 @@
+<form id="login">
+  <fieldset>
+    <label for="login">Login</label>
+    {{input type="text"
+            name="login"
+            value=login
+            placeholder="Enter your username..."
+            required="true"
+            autofocus="true"}}
+  </fieldset>
+
+  <fieldset>
+    <label for="password">Password</label>
+    {{input type="password"
+            name="password"
+            value=password
+            required="true"}}
+  </fieldset>
+
+  <button {{action "authenticate"}}>Login</button>
+</form>

@@ -1,6 +1,15 @@
 import Whistler from 'rackham/utils/whistler';
 
 export default Ember.Route.extend({
+  beforeModel: function(transition) {
+    var session = this.controllerFor('session');
+
+    if (!session.get('isLoggedIn')) {
+      session.set('previousTransition', transition);
+      this.transitionTo('session.new');
+    }
+  },
+
   actions: {
     createTrack: function(upload) {
       var attributes = upload.getProperties(
