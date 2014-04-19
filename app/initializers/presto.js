@@ -1,8 +1,11 @@
 import Presto from 'presto';
 
-$(function() {
-  Presto.reopenClass({
-    bucketUrl: ENV.bucketPath,
-    policyUrl: ENV.policyPath
-  });
-});
+export default {
+  name: 'presto',
+  initialize: function() {
+    Presto.reopenClass({
+      bucketUrl: ENV.bucketPath,
+      policyUrl: ENV.policyPath
+    });
+  }
+};
