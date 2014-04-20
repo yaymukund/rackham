@@ -1,4 +1,6 @@
 @import 'mixins/animation';
+@import 'mixins/placeholder';
+@import 'mixins/rackham-button';
 
 @mixin transform($args) {
   -webkit-transform: $args;
@@ -30,24 +32,6 @@
   -webkit-box-shadow:$top $left $blur $color #{$inset};
   -moz-box-shadow:$top $left $blur $color #{$inset};
   box-shadow:$top $left $blur $color #{$inset};
-}
-
-@mixin upload-button($bg-color, $shadow-color) {
-  @include box-shadow(0, 6px, 0, $shadow-color);
-  background-color: $bg-color;
-  border-radius: 0 0 5px 5px;
-  color: white;
-  transition: none;
-  cursor: pointer;
-  padding: 1.5rem 3rem;
-  font-weight: 700;
-  font-size: 1.8rem;
-  outline: none;
-  border: none;
-  position: relative;
-
-  &:hover:enabled { top: 0.2rem; }
-  &:active:enabled { top: 0.6rem; }
 }
 
 @mixin no-text {

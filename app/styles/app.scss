@@ -9,14 +9,42 @@ body {
 
 header {
   @include linear-gradient(#5d495f 90px, #413445 62px);
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   height: 149px;
-  width: 100vw;
-  padding: 8px 0 2rem 1rem;
+  padding: 8px 0.5rem 2rem 1rem;
 
   #logo {
     margin: 0;
     @include replace-image('/images/logo.gif', 148px, 149px);
+  }
+}
+
+form.login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ad98af;
+  padding: 0.75rem;
+  width: 29rem;
+
+  fieldset {
+    display: flex;
+    border: 0;
+    padding: 0;
+  }
+
+  button {
+    @include rackham-button;
+    width: 8rem;
+  }
+
+  input.password { margin-top: 0.5rem; }
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid #bb82cc;
   }
 }
 
@@ -82,7 +110,7 @@ input[type=file] { display: none; }
 
 .upload-track {
   margin-top: 1vh;
-  @include upload-button(#4d3a62, #332443);
+  @include rackham-button;
 
   .text {
     position: relative;

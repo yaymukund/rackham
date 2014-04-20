@@ -1,0 +1,17 @@
+@mixin rackham-button {
+  @include box-shadow(0, 0.5rem, 0, #332443);
+  background-color: #4d3a62;
+  border-radius: 0 0 5px 5px;
+  color: white;
+  transition: none;
+  cursor: pointer;
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  outline: none;
+  border: none;
+  position: relative;
+
+  &:hover:enabled { top: 0.2rem; }
+  &:active:enabled { top: 0.6rem; }
+}

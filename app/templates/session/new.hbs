@@ -1,21 +1,24 @@
-<form id="login">
-  <fieldset>
-    <label for="login">Login</label>
-    {{input type="text"
-            name="login"
-            value=login
-            placeholder="Enter your username..."
-            required="true"
-            autofocus="true"}}
-  </fieldset>
+{{#if session.isLoggedIn}}
+  <p class="logged-in">Logged in as {{session.user.login}}</p>
+{{else}}
+  <form class="login">
+    <fieldset>
+      {{input type="text"
+              name="login"
+              class="login"
+              value=login
+              placeholder="Username"
+              required="true"
+              autofocus="true"}}
 
-  <fieldset>
-    <label for="password">Password</label>
-    {{input type="password"
-            name="password"
-            value=password
-            required="true"}}
-  </fieldset>
+      {{input type="password"
+              name="password"
+              class="password"
+              value=password
+              placeholder="●●●●●●●●"
+              required="true"}}
+    </fieldset>
 
-  <button {{action "authenticate"}}>Login</button>
-</form>
+    <button {{action "authenticate"}}>Login</button>
+  </form>
+{{/if}}

@@ -26,3 +26,13 @@ table.tracks {
   font-size: 1.4rem;
   text-align: left;
 }
+
+form.login {
+  input {
+    font-size: 1.4rem;
+    border: 2px solid #ad98af;
+    @include placeholder {
+      color: #ad98af;
+    }
+  }
+}
