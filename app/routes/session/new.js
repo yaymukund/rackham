@@ -14,7 +14,7 @@ export default Ember.Route.extend({
       var promise = new Ember.RSVP.Promise(function(resolve, reject) {
         $.ajax({
           type: 'POST',
-          url: '/sessions',
+          url: '/session',
           data: { user: credentials }
         }).done(resolve).fail(reject);
       });
