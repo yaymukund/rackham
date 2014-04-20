@@ -5,6 +5,11 @@ export default Ember.Route.extend({
     }
   },
 
+  setupController: function(controller) {
+    var session = this.controllerFor('session');
+    controller.set('session', session);
+  },
+
   actions: {
     authenticate: function() {
       var session = this.controllerFor('session'),
