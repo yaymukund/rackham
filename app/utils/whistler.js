@@ -6,7 +6,7 @@
 // - Fire a `new_track` event when the Whistle server says that everyone's
 //   ready to move to the next track.
 import Html5Audio from 'rackham/utils/html5-audio';
-import SocketMixin from 'rackham/utils/socket-mixin';
+import SocketMixin from 'rackham/mixins/socket';
 
 var whistlers = {};
 
