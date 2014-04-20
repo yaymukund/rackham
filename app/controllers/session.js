@@ -12,6 +12,8 @@ export default Ember.Controller.extend({
     if (this.get('previousTransition')) {
       this.get('previousTransition').retry();
       this.set('previousTransition', null);
+    } else {
+      this.transitionToRoute('index');
     }
 
     return user;
