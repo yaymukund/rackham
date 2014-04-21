@@ -1,5 +1,6 @@
-{{#if session.isLoggedIn}}
-  <p class="logged-in">Logged in as {{session.user.login}}</p>
+{{#if currentUser}}
+  <p class="logged-in">Logged in as {{currentUser.login}}</p>
+
 {{else}}
   <form class="login">
     <fieldset>

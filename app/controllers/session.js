@@ -1,6 +1,8 @@
 export default Ember.Controller.extend({
   user: null,
-  isLoggedIn: Ember.computed.notEmpty('user'),
+  store: null,
+  previousTransition: null,
+  isAuthenticated: Ember.computed.notEmpty('user'),
 
   loadUser: function(payload) {
     var user, store = this.store;
@@ -8,14 +10,26 @@ export default Ember.Controller.extend({
     store.pushPayload('user', payload);
     user = store.getById('user', payload.user.id);
     this.set('user', user);
-
-    if (this.get('previousTransition')) {
-      this.get('previousTransition').retry();
-      this.set('previousTransition', null);
-    } else {
-      this.transitionToRoute('index');
-    }
-
     return user;
+  },
+
+  authenticate: function(credentials) {
+    var self = this;
+
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      $.ajax({
+        type: 'POST',
+        url: '/session',
+        data: { user: credentials }
+
+      }).done(function(payload) {
+        var transition = self.get('previousTransition'),
+            user = self.loadUser(payload);
+
+        self.set('previousTransition', null);
+        resolve({ user: user, transition: transition });
+      }).fail(reject);
+    });
   }
 });
+
