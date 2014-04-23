@@ -21,13 +21,21 @@ export default Ember.Route.extend({
             password: self.get('controller.password')
           };
 
-      session.authenticate(credentials).then(function(response) {
-        if (response.transition) {
-          response.transition.retry();
+      $.ajax({
+        type: 'POST',
+        url: '/session',
+        data: { user: credentials }
+      }).done(function(payload) {
+        session.loadUser(payload);
+
+        var transition = session.get('previousTransaction');
+
+        if (transition) {
+          transition.retry();
         } else {
           self.transitionTo('index');
         }
-      });
+      })
     }
   }
 });
