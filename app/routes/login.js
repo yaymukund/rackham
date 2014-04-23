@@ -1,3 +1,5 @@
+import { request } from 'ic-ajax';
+
 export default Ember.Route.extend({
   setupController: function(controller) {
     var session = this.controllerFor('session');
@@ -21,11 +23,11 @@ export default Ember.Route.extend({
             password: self.get('controller.password')
           };
 
-      $.ajax({
+      request({
         type: 'POST',
         url: '/session',
         data: { user: credentials }
-      }).done(function(payload) {
+      }).then(function(payload) {
         session.loadUser(payload);
 
         var transition = session.get('previousTransaction');
