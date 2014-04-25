@@ -1,0 +1,7 @@
+<ul id="rooms">
+  {{#each}}
+    <li class="room">
+      {{#link-to 'room' id}}{{title}}{{/link-to}}
+    </li>
+  {{/each}}
+</ul>

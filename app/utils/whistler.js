@@ -45,14 +45,26 @@ var Whistler = Html5Audio.extend(SocketMixin, {
   emitProgress: function() {
     var self = this;
 
-    setInterval(function() {
+    var intervalId = setInterval(function() {
       if (self.get('isEnded')) { return; }
       self.emit('progress', self.get('currentTime'));
     }, 2000);
 
+    this.set('intervalId', intervalId);
+
     // Only run once...
     this.off('loadedmetadata', null, 'emitProgress');
-  }.on('loadedmetadata')
+  }.on('loadedmetadata'),
+
+  willDestroy: function() {
+    var intervalId = this.get('intervalId');
+
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+
+    delete whistlers[this.get('roomId')];
+  }
 });
 
 Whistler.reopenClass({

@@ -25,5 +25,10 @@ export default Ember.Component.extend({
         room.reload();
       });
     });
-  }.on('didInsertElement')
+  }.on('didInsertElement'),
+
+  teardownWhistler: function() {
+    this.get('whistler').destroy();
+    this.set('whistler', null);
+  }.on('willDestroyElement')
 });

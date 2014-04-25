@@ -8,7 +8,10 @@ body {
 }
 
 header {
-  @include linear-gradient(#5d495f 90px, #413445 62px);
+  @include linear-gradient('to bottom', #614c67 0%,
+                                        #614c67 50%,
+                                        #55445c 51%,
+                                        #413445 100%);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -26,7 +29,8 @@ form.login {
   align-items: center;
   justify-content: space-between;
   background-color: #ad98af;
-  padding: 0.75rem;
+  padding: 1rem;
+  margin: 0 auto;
   width: 29rem;
 
   fieldset {

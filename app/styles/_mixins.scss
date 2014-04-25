@@ -1,6 +1,7 @@
 @import 'mixins/animation';
 @import 'mixins/placeholder';
 @import 'mixins/rackham-button';
+@import 'mixins/linear-gradient';
 
 @mixin transform($args) {
   -webkit-transform: $args;
@@ -12,14 +13,6 @@
   -webkit-transform-origin: $args;
   -moz-transform-origin: $args;
   transform-origin: $args;
-}
-
-@mixin linear-gradient($from, $to) {
-  background-color: $from;
-  background-image: -moz-linear-gradient($from, $to);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
-  background-image: -webkit-linear-gradient($from, $to);
-  background-image: -o-linear-gradient($from, $to);
 }
 
 @mixin border-radius($radius) {
