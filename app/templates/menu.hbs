@@ -1,0 +1,7 @@
+<div id="menu">
+  {{#if session.user}}
+    <p class="logged-in">Logged in as {{session.user.login}}</p>
+  {{else}}
+    {{#link-to 'login'}}Login{{/link-to}}
+  {{/if}}
+</div>

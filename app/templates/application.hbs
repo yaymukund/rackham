@@ -1,5 +1,7 @@
 <header>
-  <h1 id="logo">Ditty</h1>
+  {{#link-to 'index' id="logo"}}Ditty{{/link-to}}
+  {{render 'menu'}}
 </header>
 
+{{outlet modal}}
 {{outlet}}
