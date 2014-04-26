@@ -1,7 +1,15 @@
-<div id="menu">
+<nav id="menu">
   {{#if session.user}}
-    <p class="logged-in">Logged in as {{session.user.login}}</p>
-  {{else}}
-    {{#link-to 'login'}}Login{{/link-to}}
+    <li class="logged-in">Logged in as {{session.user.login}}</li>
   {{/if}}
-</div>
+
+  <ul>
+    <li class="home">{{#link-to 'index'}}Home{{/link-to}}</li>
+
+    {{#if session.user}}
+      <li class="logout"><a {{action 'logout'}} href="#">Logout</a></li>
+    {{else}}
+      <li class="login">{{#link-to 'login'}}Login{{/link-to}}</li>
+    {{/if}}
+  </ul>
+</nav>

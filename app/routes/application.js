@@ -1,3 +1,5 @@
+import request from 'ic-ajax';
+
 export default Ember.Route.extend({
   beforeModel: function(transition) {
     var store = this.store,
@@ -6,6 +8,23 @@ export default Ember.Route.extend({
 
     if (json) {
       session.loadUser(JSON.parse(json));
+    }
+  },
+
+  actions: {
+    logout: function() {
+      var session = this.controllerFor('session');
+
+      if (!session.get('isAuthenticated')) {
+        return;
+      }
+
+      request({
+        type: 'DELETE',
+        url: '/session'
+      }).then(function(response) {
+        session.set('user', null);
+      });
     }
   }
 });
