@@ -10,6 +10,11 @@ export default Ember.Route.extend({
     }
   },
 
+  setupController: function(controller, model) {
+    this.controllerFor('tracks').set('content', model.get('tracks'));
+    this._super(controller, model);
+  },
+
   actions: {
     createTrack: function(upload) {
       var attributes = upload.getProperties(

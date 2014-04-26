@@ -1,20 +1,15 @@
 export default Ember.ArrayController.extend({
   itemController: 'track',
-
-  needs: ['room'],
-
   sortProperties: ['trackOrder'],
   sortAscending: true,
 
-  tracks: Ember.computed.alias('controllers.room.tracks'),
-
-  content: Ember.computed.filter('tracks', function(track) {
+  queuedTracks: Ember.computed.filter('content', function(track) {
     return !Ember.isEmpty(track.get('trackOrder'));
-  }).property('tracks.@each.trackOrder'),
+  }).property('content.@each.trackOrder'),
 
-  queuedTracks: Ember.computed.filter('arrangedContent', function(track) {
+  unplayedTracks: Ember.computed.filter('arrangedContent', function(track) {
     return Ember.isEmpty(track.get('playedAt'));
-  }),
+  }).property('content.@each.playedAt'),
 
-  currentTrack: Ember.computed.alias('queuedTracks.firstObject')
+  currentTrack: Ember.computed.alias('unplayedTracks.firstObject')
 });

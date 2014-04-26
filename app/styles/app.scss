@@ -52,7 +52,7 @@ form.login {
   }
 }
 
-.room {
+#room {
   display: flex;
   flex-direction: column;
   margin-left: 3rem;
@@ -129,4 +129,9 @@ input[type=file] { display: none; }
     background-color: #ad15dc;
     opacity: 0.5;
   }
+}
+
+li.room {
+  margin: 0.5rem 0;
+  display: block;
 }

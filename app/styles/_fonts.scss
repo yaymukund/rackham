@@ -1,5 +1,17 @@
 html { font-size: 62.5%; }
 
+@mixin link {
+  &:link, &:hover, &:visited, &:active {
+    padding: 0 0.25rem;
+    color: #BF97DA;
+    background-color: #6a5775;
+    display: inline-block;
+  }
+
+  &:hover {
+  }
+}
+
 .current-track {
   font-family: 'Lora', serif;
   color: white;
@@ -34,5 +46,12 @@ form.login {
     @include placeholder {
       color: #ad98af;
     }
+  }
+}
+
+#rooms {
+  a {
+    font-size: 1.8rem;
+    @include link;
   }
 }
