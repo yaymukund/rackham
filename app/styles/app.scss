@@ -24,6 +24,11 @@ header {
   }
 }
 
+nav#menu {
+  ul { list-style-type: none; }
+  li:not(:first-child) { margin-top: 0.5rem; }
+}
+
 form.login {
   display: flex;
   align-items: center;
@@ -56,24 +61,24 @@ form.login {
   display: flex;
   flex-direction: column;
   margin-left: 3rem;
+
+  .main {
+    display: flex;
+    margin-top: 1rem;
+
+    img.album-cover {
+      margin-bottom: 1rem;
+      width: 300px;
+      height: 300px;
+      min-width: 300px;
+      min-height: 300px;
+    }
+  }
 }
 
 .current-track {
   width: 100vw;
   .timestamp { margin-left: 1rem; }
-}
-
-.main {
-  display: flex;
-  margin-top: 1rem;
-
-  img.album-cover {
-    margin-bottom: 1rem;
-    width: 300px;
-    height: 300px;
-    min-width: 300px;
-    min-height: 300px;
-  }
 }
 
 .playlist {

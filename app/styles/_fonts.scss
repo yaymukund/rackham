@@ -9,6 +9,8 @@ html { font-size: 62.5%; }
   }
 
   &:hover {
+    color: #E3D0FF;
+    background-color: #8469B3;
   }
 }
 
@@ -51,6 +53,13 @@ form.login {
 
 #rooms {
   a {
+    font-size: 1.8rem;
+    @include link;
+  }
+}
+
+nav#menu {
+  li a {
     font-size: 1.8rem;
     @include link;
   }
