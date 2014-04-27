@@ -18,23 +18,9 @@ export default Ember.View.extend({
     var upload = Presto.upload(file);
     self.set('upload', upload);
 
-    Ember.RSVP.hash({
-      postResponse: upload,
-      metadata: parseMetadata(file)
-
-    }).then(function(results) {
-      var $postResponse = $(results.postResponse),
-          filepath = $postResponse.find('PostResponse > Location').text();
-
-      upload.setProperties({
-        url: filepath,
-        title: results.metadata.title,
-        artist: results.metadata.artist,
-        album: results.metadata.album
-      });
-
+    upload.then(function(results) {
       input.value = '';
-      self.get('parentView.controller').send('createTrack', upload);
+      self.get('controller').send('createTrack', results);
 
     }).catch(function(error) {
       // Do something better;
@@ -48,12 +34,3 @@ export default Ember.View.extend({
     }
   }
 });
-
-var parseMetadata = function(file) {
-  return new Ember.RSVP.Promise(function(resolve, reject) {
-    id3(file, function(err, tags) {
-      if (err) { reject(err); }
-      else { resolve(tags); }
-    });
-  });
-};

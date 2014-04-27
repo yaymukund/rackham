@@ -16,14 +16,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    createTrack: function(upload) {
-      var attributes = upload.getProperties(
-        'url',
-        'title',
-        'artist',
-        'album'
-      );
-
+    createTrack: function(attributes) {
       var track = this.get('controller.tracks').createRecord(attributes);
 
       track.save().then(function(track) {
