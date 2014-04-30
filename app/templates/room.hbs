@@ -2,7 +2,9 @@
   {{music-file room=content track=currentTrack}}
 
   <div class="main">
-    <img class="album-cover" src="http://ecx.images-amazon.com/images/I/512BBWRFD6L._SY300_.jpg">
+    {{#if currentTrack.coverImageUrl}}
+      <img class="album-cover" {{bind-attr src="currentTrack.coverImageUrl"}}>
+    {{/if}}
 
     <div class="playlist">
       {{render 'tracks'}}
