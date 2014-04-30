@@ -48,7 +48,7 @@ var Whistler = Html5Audio.extend(SocketMixin, {
     var intervalId = setInterval(function() {
       if (self.get('isEnded')) { return; }
       self.emit('progress', self.get('currentTime'));
-    }, 2000);
+    }, 500);
 
     this.set('intervalId', intervalId);
 
