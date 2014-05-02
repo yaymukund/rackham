@@ -1,10 +1,14 @@
-<h2>Rooms</h2>
+<div id="rooms">
+  <h2>Rooms</h2>
 
-<ul id="rooms">
-  {{#each}}
-    <li class="room">
-      {{#link-to 'room' this}}{{title}}{{/link-to}}
-      {{render 'tracks-summary' tracks}}
-    </li>
-  {{/each}}
-</ul>
+  <ul>
+    {{#each}}
+      <li>
+        {{#link-to 'room' this}}
+          <span class="room title">{{title}}</span>
+          {{render 'tracks-summary' tracks}}
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+</div>

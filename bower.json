@@ -8,7 +8,6 @@
     "ember": "1.5.0",
     "ember-data": "1.0.0-beta.7",
     "presto": "git@github.com:yaymukund/presto.git#0.3.3",
-    "id3js": "43081j/id3#v1.0.2",
     "ember-resolver": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git#master",
     "ic-ajax": "~1.x",
     "loader": "git://github.com/stefanpenner/loader.js#1.0.0"

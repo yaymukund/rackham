@@ -1,6 +1,5 @@
 import App from 'rackham/app';
 import Presto from 'presto';
-import 'id3';
 
 export default Ember.View.extend({
   templateName: 'mp3-upload',
@@ -20,6 +19,7 @@ export default Ember.View.extend({
 
     upload.then(function(results) {
       input.value = '';
+      self.get('upload').destroy();
       self.get('controller').send('createTrack', results);
 
     }).catch(function(error) {

@@ -1,3 +1,7 @@
-<div class="tracks summary">
-  {{currentTrack.title}}
+<div class="tracks summary" {{bind-attr style=backgroundImageStyle}}>
+
+  {{#with currentTrack}}
+    <div class="current-track">{{partial 'track'}}</div>
+  {{/with}}
+
 </div>

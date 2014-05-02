@@ -52,9 +52,19 @@ form.login {
 }
 
 #rooms {
-  a {
+  a { text-decoration: none; }
+  a:hover .room.title { text-decoration: underline; }
+
+  .room.title {
     font-size: 1.8rem;
-    @include link;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #BF97DA;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    color: #BF97DA;
   }
 }
 

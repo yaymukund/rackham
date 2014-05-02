@@ -74,11 +74,45 @@ form.login {
       min-height: 300px;
     }
   }
+
+  .current-track {
+    width: 100vw;
+    .timestamp { margin-left: 1rem; }
+  }
 }
 
-.current-track {
-  width: 100vw;
-  .timestamp { margin-left: 1rem; }
+#rooms {
+  ul {
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      margin: 0.5rem;
+
+      .room.title {
+        background-color: rgba(131, 28, 121, 0.5);
+        display: block;
+        padding: 0.5rem 1rem 1rem 1rem;
+      }
+
+      a {
+        &:hover { border-color: #831c79; }
+        &:hover .room.title { background-color: #831c79; }
+        border: 1rem solid rgba(131, 28, 121, 0.5);
+        display: inline-block;
+        width: 300px;
+      }
+    }
+  }
+}
+
+div.tracks.summary {
+  .current-track {
+    padding: 1rem;
+    .track { background: rgba(131, 28, 121, 0.9); }
+    .title:after { content:"\a"; white-space: pre; }
+    .by { margin-right: 0; }
+  }
 }
 
 .playlist {
