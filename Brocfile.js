@@ -75,6 +75,7 @@ module.exports = function (broccoli) {
   applicationJs = compileES6(applicationJs, {
     loaderFile: 'loader/loader.js',
     ignoredModules: [
+      'id3',
       'ember/resolver',
       'ic-ajax'
     ],
