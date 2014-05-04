@@ -1,17 +1,7 @@
-html { font-size: 62.5%; }
-
-@mixin link {
-  &:link, &:hover, &:visited, &:active {
-    padding: 0 0.25rem;
-    color: #BF97DA;
-    background-color: #6a5775;
-    display: inline-block;
-  }
-
-  &:hover {
-    color: #E3D0FF;
-    background-color: #8469B3;
-  }
+html {
+  font-size: 62.5%;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
 }
 
 .current-track {
@@ -35,7 +25,6 @@ html { font-size: 62.5%; }
 }
 
 table.tracks {
-  font-family: Verdana, sans-serif;
   color: white;
   font-size: 1.4rem;
   text-align: left;
@@ -53,7 +42,9 @@ form.login {
 
 #rooms {
   a { text-decoration: none; }
-  a:hover .room.title { text-decoration: underline; }
+
+  a .room.title { text-decoration: underline; }
+  a:hover .room.title { color: white; }
 
   .room.title {
     font-size: 1.8rem;
@@ -71,6 +62,8 @@ form.login {
 nav#menu {
   li a {
     font-size: 1.8rem;
-    @include link;
+    font-weight: bold;
+    color: #BF97DA;
+    &:hover { color: white; }
   }
 }

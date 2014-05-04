@@ -4,29 +4,43 @@
 @import 'spinner';
 
 body {
-  background-color: #413445;
+  padding: 2rem;
+  min-height: 100vh;
+  @include linear-gradient('to bottom', #A0195A 0,
+                                        #551e63 75px,
+                                        #1A0625 150px)
 }
 
 header {
-  @include linear-gradient('to bottom', #614c67 0%,
-                                        #614c67 50%,
-                                        #55445c 51%,
-                                        #413445 100%);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  height: 149px;
-  padding: 8px 0.5rem 2rem 1rem;
+  height: 75px;
 
   #logo {
     margin: 0;
-    @include replace-image('/images/logo.gif', 148px, 149px);
+    @include replace-image('/images/logo.png', 57px, 110px);
   }
 }
 
 nav#menu {
-  ul { list-style-type: none; }
-  li:not(:first-child) { margin-top: 0.5rem; }
+  ul {
+    list-style-type: none;
+    display: flex;
+
+    li a {
+      padding: 0.25rem 0.5rem;
+      margin-left: 0.5rem;
+      border-top: 1px solid #A01E9B;
+      display: inline-block;
+      background-color: #831c79;
+
+      &:hover {
+        background-color: #A01E9B;
+        border-top-color: #C72AC1;
+      }
+    }
+  }
 }
 
 form.login {
@@ -77,6 +91,7 @@ form.login {
 
   .current-track {
     width: 100vw;
+    .track { background-color: #831c79; }
     .timestamp { margin-left: 1rem; }
   }
 }
@@ -84,15 +99,16 @@ form.login {
 #rooms {
   ul {
     list-style-type: none;
+    padding-left: 0;
 
     li {
       display: inline-block;
-      margin: 0.5rem;
+      margin: 0 0.5rem 0.5rem 0;
 
       .room.title {
         background-color: rgba(131, 28, 121, 0.5);
         display: block;
-        padding: 0.5rem 1rem 1rem 1rem;
+        padding: 0 0 1rem 1rem;
       }
 
       a {
@@ -128,16 +144,9 @@ table.tracks {
   tr {
     &:nth-child(odd) { background-color: #2b222e; }
     &:nth-child(even) { background-color: #413445; }
-
     th { border: 1px solid #563c5e; }
-
-    td, th {
-      padding: 0.5rem 1rem;
-    }
-
-    &.is-playing {
-      color: white;
-    }
+    td, th { padding: 0.5rem 1rem; }
+    &.is-playing { color: white; }
   }
 
 // A gradient below the playlist... need to readd this.
