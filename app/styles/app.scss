@@ -179,3 +179,21 @@ li.room {
   margin: 0.5rem 0;
   display: block;
 }
+
+.notification.error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #8D0202;
+  padding: 1rem;
+  border: 1px solid #9E3333;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+
+  p { margin: 0; }
+
+  a {
+    &:hover { background-color: #660918; }
+  }
+}

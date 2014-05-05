@@ -12,19 +12,18 @@ export default Ember.View.extend({
   uploadTrack: function(evt) {
     var input = evt.target,
         file = (input.files && input.files[0]),
-        self = this;
+        controller = this.get('controller');
 
     var upload = Presto.upload(file);
-    self.set('upload', upload);
+    this.set('upload', upload);
 
     upload.then(function(results) {
       input.value = '';
-      self.get('upload').destroy();
-      self.get('controller').send('createTrack', results);
+      upload.destroy();
+      controller.send('createTrack', results);
 
-    }).catch(function(error) {
-      // Do something better;
-      throw error;
+    }).catch(function() {
+      controller.send('displayError', 'There was an error uploading the mp3.');
     });
   }.on('change'),
 

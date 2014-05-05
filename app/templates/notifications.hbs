@@ -1,0 +1,11 @@
+{{#if error}}
+<div class="error notification">
+  <p>{{error}}</p>
+  <a {{action 'clearError'}} href="#" class="close-button">Close</a>
+</div>
+{{/if}}
+
+{{#if warning}}
+  <p class="warning notification">{{warning}}</p>
+  <a {{action 'clearWarning'}} href="#" class="close-button">Close</a>
+{{/if}}

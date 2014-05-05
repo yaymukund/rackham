@@ -25,6 +25,10 @@ export default Ember.Route.extend({
       }).then(function(response) {
         session.set('user', null);
       });
+    },
+
+    displayError: function(errorMessage) {
+      this.controllerFor('notifications').set('error', errorMessage);
     }
   }
 });

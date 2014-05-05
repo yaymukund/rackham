@@ -67,3 +67,15 @@ nav#menu {
     &:hover { color: white; }
   }
 }
+
+.notification.error {
+  color: #F0B3BD;
+  font-size: 1.8rem; 
+
+  a {
+    color: #F0B3BD;
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+    &:hover { color: white; }
+  }
+}
