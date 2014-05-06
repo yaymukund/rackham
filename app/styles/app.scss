@@ -197,3 +197,14 @@ li.room {
     &:hover { background-color: #660918; }
   }
 }
+
+#volume-control {
+  height: 15px;
+  width: 150px;
+  background-color: #ccc;
+
+  #volume-control-fill {
+    height: 15px;
+    background-color: white;
+  }
+}

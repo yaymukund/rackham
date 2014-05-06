@@ -9,6 +9,8 @@
     </span>
   {{/if}}
 
+  {{volume-control volume=view.volume}}
+
   <audio class="player" autoplay>
     <!-- The component object takes care of updating sourceUrl. -->
     <source src="{{unbound track.url}}" type="{{unbound track.filetype}}">

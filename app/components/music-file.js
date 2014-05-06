@@ -1,6 +1,8 @@
 import Whistler from 'rackham/utils/whistler';
 
 export default Ember.Component.extend({
+  volume: Ember.computed.alias('whistler.volume'),
+
   reloadPlayer: function() {
     var self = this;
 
@@ -18,12 +20,11 @@ export default Ember.Component.extend({
           '$audio': $audio
         });
 
+    this.set('$audio', $audio);
     this.set('whistler', whistler);
 
     whistler.on('new_track', function() {
-      Ember.run(function() {
-        room.reload();
-      });
+      Ember.run(function() { room.reload(); });
     });
   }.on('didInsertElement'),
 

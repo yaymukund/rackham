@@ -64,5 +64,12 @@ export default Ember.Object.extend(Ember.Evented, {
 
   updateTime: function(currentTime) {
     this.get('$audio')[0].currentTime = currentTime;
-  }
+  },
+
+  updateVolume: function() {
+    var volume = this.get('volume'),
+        audio = this.get('$audio')[0];
+
+    Ember.run.once(function() { audio.volume = volume; });
+  }.observes('volume')
 });
