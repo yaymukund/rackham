@@ -198,10 +198,7 @@ li.room {
   margin-bottom: 1rem;
 
   p { margin: 0; }
-
-  a {
-    &:hover { background-color: #660918; }
-  }
+  a:hover { background-color: #660918; }
 }
 
 #volume-control {
@@ -212,6 +209,7 @@ li.room {
   background: url('/images/volume-control.png');
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  cursor: pointer;
 
   #volume-control-button {
     height: 12px;
