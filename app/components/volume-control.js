@@ -2,11 +2,12 @@ export default Ember.Component.extend({
   tagName: 'div',
   attributeBindings: ['elementId:id'],
   elementId: 'volume-control',
-  volume: 1,
   isDragging: false,
 
   setDimensions: function() {
-    this.set('$control', this.$());
+    var $control = this.$();
+    this.set('$control', $control);
+    this.set('width', $control.width());
   }.on('didInsertElement'),
 
   listenForDragStop: function() {
@@ -16,9 +17,9 @@ export default Ember.Component.extend({
     });
   }.on('didInsertElement'),
 
-  volumeWidth: function() {
-    var volume = this.get('volume');
-    return 'left: %@%;'.fmt(volume*100);
+  volumeButtonPosition: function() {
+    var position = this.getWithDefault('volume', 1) * 100;
+    return 'margin-left: %@%;'.fmt(position);
   }.property('volume'),
 
   startDragging: function(event) {
@@ -28,9 +29,9 @@ export default Ember.Component.extend({
 
   setVolume: function(event) {
     var $control = this.get('$control'),
+        width = this.get('width'),
         offset = $control.offset(),
-        width = $control.width(),
-        percent = (event.clientX - offset.left - 6) / width;
+        percent = (event.clientX - offset.left - 16) / width;
 
     percent = Math.round(percent*100) / 100;
     if (percent > 1) { percent = 1; }

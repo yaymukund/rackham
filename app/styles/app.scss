@@ -89,7 +89,13 @@ form.login {
   .current-track {
     width: 100vw;
     .track { background-color: #831c79; }
-    .timestamp { margin-left: 1rem; }
+    .timestamp {
+      time:first-of-type {
+        display: inline-block;
+        width: 5.5rem;
+        text-align: right;
+      }
+    }
   }
 }
 
@@ -207,7 +213,7 @@ li.room {
   background-position: 50% 50%;
   background-repeat: no-repeat;
 
-  #volume-control-fill {
+  #volume-control-button {
     height: 12px;
     width: 12px;
     background: url('/images/volume-control-thumb.png');
