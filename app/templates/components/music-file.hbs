@@ -9,7 +9,9 @@
     </span>
   {{/if}}
 
-  {{volume-control volume=view.volume}}
+  {{#if whistler.isPlaying}}
+    {{volume-control volume=view.volume}}
+  {{/if}}
 
   <audio class="player" autoplay>
     <!-- The component object takes care of updating sourceUrl. -->

@@ -6,30 +6,35 @@ export default Ember.Component.extend({
   isDragging: false,
 
   setDimensions: function() {
-    var $control = this.$();
-    this.set('offset', $control.offset());
-    this.set('width', $control.width());
+    this.set('$control', this.$());
   }.on('didInsertElement'),
 
-  stopDragging: function() {
-    this.set('isDragging', false);
-  }.on('mouseLeave', 'mouseUp'),
+  listenForDragStop: function() {
+    var self = this;
+    $(window).on('mouseup.volumedragstop', function() {
+      self.set('isDragging', false);
+    });
+  }.on('didInsertElement'),
 
   volumeWidth: function() {
     var volume = this.get('volume');
-    return 'width: %@%;'.fmt(volume*100);
+    return 'left: %@%;'.fmt(volume*100);
   }.property('volume'),
 
   startDragging: function(event) {
+    event.preventDefault();
     this.set('isDragging', true);
   }.on('mouseDown'),
 
   setVolume: function(event) {
-    var offset = this.get('offset'),
-        width = this.get('width'),
-        percent = (event.clientX - offset.left) / width;
+    var $control = this.get('$control'),
+        offset = $control.offset(),
+        width = $control.width(),
+        percent = (event.clientX - offset.left - 6) / width;
 
     percent = Math.round(percent*100) / 100;
+    if (percent > 1) { percent = 1; }
+    if (percent < 0) { percent = 0; }
     this.set('volume', percent);
     return false;
   }.on('click'),
@@ -38,5 +43,9 @@ export default Ember.Component.extend({
     if (this.get('isDragging')) {
       this.setVolume(event);
     }
-  }.on('mouseMove')
+  }.on('mouseMove'),
+
+  stopListenForDragStop: function() {
+    $(window).off('mouseup.volumedragstop');
+  }.on('willDestroyElement')
 });
