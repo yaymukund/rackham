@@ -32,7 +32,9 @@ export default Ember.Route.extend({
         } else {
           self.send('cancel');
         }
-      })
+      }).catch(function(error) {
+        self.send('displayError', error.jqXHR.responseText);
+      });
     },
 
     cancel: function() {

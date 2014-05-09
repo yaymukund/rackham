@@ -19,7 +19,7 @@ export default Ember.Component.extend({
 
   volumeButtonPosition: function() {
     var position = this.getWithDefault('volume', 1) * 100;
-    return 'margin-left: %@%;'.fmt(position);
+    return 'background-position: %@% 50%;'.fmt(position);
   }.property('volume'),
 
   startDragging: function(event) {

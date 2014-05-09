@@ -4,6 +4,8 @@
   <div class="main">
     {{#if currentTrack.coverImageUrl}}
       <img class="album-cover" {{bind-attr src="currentTrack.coverImageUrl"}}>
+    {{else}}
+      <div class="no-album-cover">Cover not found</div>
     {{/if}}
 
     <div class="playlist">

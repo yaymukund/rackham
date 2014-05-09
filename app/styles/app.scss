@@ -77,19 +77,34 @@ form.login {
     display: flex;
     margin-top: 1rem;
 
-    img.album-cover {
+    .album-cover {
       margin-bottom: 1rem;
       width: 300px;
       height: 300px;
       min-width: 300px;
       min-height: 300px;
     }
+
+    .no-album-cover {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+      width: 280px;
+      height: 280px;
+      min-width: 280px;
+      min-height: 280px;
+      border: 10px solid #84157a;
+      background-color: #350d43;
+    }
   }
 
   .current-track {
-    width: 100vw;
+    display: flex;
+    align-items: baseline;
     .track { background-color: #831c79; }
     .timestamp {
+      min-width: 10rem;
       time:first-of-type {
         display: inline-block;
         width: 5.5rem;
@@ -202,9 +217,10 @@ li.room {
 }
 
 #volume-control {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
   width: 50px;
-  height: 15px;
   padding: 0 1rem;
   background: url('/images/volume-control.png');
   background-position: 50% 50%;
@@ -213,8 +229,8 @@ li.room {
 
   #volume-control-button {
     height: 12px;
-    width: 12px;
+    width: 100%;
     background: url('/images/volume-control-thumb.png');
-    position: relative;
+    background-repeat: no-repeat;
   }
 }
