@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-APP_PUBLIC_PATH="../music-room/public";
+APP_PUBLIC_PATH="../pinback/public";
 
 node_modules/ember-cli/bin/ember build --env $1
 echo 'Compiled to dist/assets/';
