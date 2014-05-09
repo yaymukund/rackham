@@ -83,19 +83,13 @@ form.login {
       height: 300px;
       min-width: 300px;
       min-height: 300px;
-    }
+      border: 10px solid #350d43;
 
-    .no-album-cover {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      margin-bottom: 1rem;
-      width: 280px;
-      height: 280px;
-      min-width: 280px;
-      min-height: 280px;
-      border: 10px solid #84157a;
-      background-color: #350d43;
+      &.not-found {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
     }
   }
 
