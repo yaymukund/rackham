@@ -40,6 +40,12 @@ form.login, form.registration {
   }
 }
 
+p.introduction {
+  font-size: 1.8rem;
+  color: #BF97DA;
+  span.ditty { font-weight: bold; }
+}
+
 #rooms {
   a { text-decoration: none; }
 
@@ -50,11 +56,6 @@ form.login, form.registration {
     font-size: 1.8rem;
     font-weight: bold;
     text-transform: capitalize;
-    color: #BF97DA;
-  }
-
-  h2 {
-    font-size: 2.4rem;
     color: #BF97DA;
   }
 }

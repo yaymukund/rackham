@@ -7,7 +7,7 @@
     width:20px;
     position: absolute;
     right: 8px;
-    top: 10px;
+    top: 6px;
     @include animation(rotation .6s infinite linear);
     border-left:6px solid rgba(182, 90, 225, .15);
     border-right:6px solid rgba(182, 90, 225, .15);

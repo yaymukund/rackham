@@ -1,16 +1,16 @@
 <table class="tracks">
   <tr>
-    <th>Artist</th>
     <th>Title</th>
+    <th>Artist</th>
     <th>Album</th>
-    <th>Uploader</th>
+    <th>Added by</th>
   </tr>
 
   {{#each queuedTracks}}
     <tr {{bind-attr class="hasPlayed isPlaying"}}>
-      <td>{{artist}}</td>
-      <td>{{title}}</td>
-      <td>{{album}}</td>
+      <td>{{#if title}}{{title}}{{else}}Unknown Title{{/if}}</td>
+      <td>{{#if artist}}{{artist}}{{else}}Unknown Artist{{/if}}</td>
+      <td>{{#if album}}{{album}}{{else}}Unknown Album{{/if}}</td>
       <td>{{user.login}}</td>
     </tr>
   {{/each}}
