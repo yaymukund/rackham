@@ -37,6 +37,10 @@ export default Ember.Route.extend({
     });
   },
 
+  deactivate: function() {
+    this.set('controller.password', null);
+  },
+
   actions: {
     authenticate: function() {
       var self = this,
