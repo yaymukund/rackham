@@ -60,10 +60,14 @@ form.login, form.registration {
 }
 
 nav#menu {
-  li a {
+  li.logged-in span.login { font-weight: bold; }
+  li a, li.logged-in {
     font-size: 1.8rem;
-    font-weight: bold;
     color: #BF97DA;
+  }
+
+  li a {
+    font-weight: bold;
     &:hover { color: white; }
   }
 }

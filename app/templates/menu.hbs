@@ -1,9 +1,9 @@
 <nav id="menu">
-  {{#if session.user}}
-    <li class="logged-in">Logged in as {{session.user.login}}</li>
-  {{/if}}
-
   <ul>
+    {{#if session.user}}
+      <li class="logged-in">Logged in as <span class="login">{{session.user.login}}</span></li>
+    {{/if}}
+
     <li class="home">{{#link-to 'index'}}Home{{/link-to}}</li>
 
     {{#if session.user}}

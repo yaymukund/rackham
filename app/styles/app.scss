@@ -28,6 +28,11 @@ nav#menu {
     list-style-type: none;
     display: flex;
 
+    li.logged-in {
+      align-self: center;
+      padding: 0.25rem 0.5rem;
+    }
+
     li a {
       padding: 0.25rem 0.5rem;
       margin-left: 0.5rem;
