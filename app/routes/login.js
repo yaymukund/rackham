@@ -9,22 +9,26 @@ export default Ember.Route.extend({
     }
   },
 
+  createSession: function() {
+    var session = this.controllerFor('session'),
+        credentials = this.get('controller')
+                          .getProperties('login', 'password');
+
+    return request({
+      type: 'POST',
+      url: '/session',
+      data: { user: credentials }
+    }).then(function(payload) {
+      session.loadUser(payload);
+    });
+  },
+
   actions: {
     authenticate: function() {
       var self = this,
-          session = self.controllerFor('session'),
-          credentials = {
-            login: self.get('controller.login'),
-            password: self.get('controller.password')
-          };
+          session = self.controllerFor('session');
 
-      request({
-        type: 'POST',
-        url: '/session',
-        data: { user: credentials }
-      }).then(function(payload) {
-        session.loadUser(payload);
-
+      self.createSession().then(function() {
         var transition = session.get('previousTransition');
 
         if (transition) {

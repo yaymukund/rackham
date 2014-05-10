@@ -39,14 +39,14 @@ nav#menu {
   }
 }
 
-form.login {
+form.login, form.registration {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   background-color: #ad98af;
   padding: 1rem;
-  margin: 0 auto;
-  width: 29rem;
+  margin: 1rem auto;
+  width: 30rem;
 
   fieldset {
     display: flex;
@@ -56,10 +56,12 @@ form.login {
 
   button {
     @include rackham-button;
-    width: 8rem;
+    width: 10rem;
+    margin-left: 1rem;
   }
 
-  input.password { margin-top: 0.5rem; }
+  input { margin-top: 0.5rem; }
+  input:first-child { margin-top: 0; }
 
   input {
     width: 18rem;
