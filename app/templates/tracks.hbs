@@ -1,13 +1,17 @@
 <table class="tracks">
   <tr>
-    <th>Title</th>
     <th>Artist</th>
+    <th>Title</th>
+    <th>Album</th>
+    <th>Uploader</th>
   </tr>
 
   {{#each queuedTracks}}
     <tr {{bind-attr class="hasPlayed isPlaying"}}>
-      <td>{{title}}</td>
       <td>{{artist}}</td>
+      <td>{{title}}</td>
+      <td>{{album}}</td>
+      <td>{{user.login}}</td>
     </tr>
   {{/each}}
 </table>
