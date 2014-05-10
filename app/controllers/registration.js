@@ -1,8 +1,10 @@
-export default Ember.Controller.extend({
+export default Ember.ObjectController.extend({
   hasLogin: Ember.computed.notEmpty('login'),
   hasEmail: Ember.computed.notEmpty('email'),
   hasPassword: Ember.computed.notEmpty('password'),
-  hasConfirmedPassword: Ember.computed.equal('password', 'passwordConfirmation'),
+  hasConfirmedPassword: function() {
+    return this.get('password') === this.get('passwordConfirmation');
+  }.property('password', 'passwordConfirmation'),
   hasError: Ember.computed.notEmpty('error'),
   error: function() {
     if (this.get('isValid')) { return null; }

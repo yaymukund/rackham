@@ -9,6 +9,11 @@ export default Ember.Route.extend({
     }
   },
 
+  setupController: function(controller, model) {
+    var registration = this.controllerFor('registration');
+    registration.set('model', this.store.createRecord('user'));
+  },
+
   createSession: function() {
     var session = this.controllerFor('session'),
         credentials = this.get('controller')
@@ -20,6 +25,15 @@ export default Ember.Route.extend({
       data: { user: credentials }
     }).then(function(payload) {
       session.loadUser(payload);
+    });
+  },
+
+  createUser: function() {
+    var user = this.controllerFor('registration').get('model'),
+        session = this.controllerFor('session');
+
+    return user.save().then(function(user) {
+      session.set('user', user);
     });
   },
 
@@ -36,6 +50,17 @@ export default Ember.Route.extend({
         } else {
           self.send('cancel');
         }
+      }).catch(function(error) {
+        self.send('displayError', error.jqXHR.responseText);
+      });
+    },
+
+    register: function() {
+      var self = this,
+          registration = self.controllerFor('registration');
+
+      self.createUser().then(function() {
+        self.send('cancel');
       }).catch(function(error) {
         self.send('displayError', error.jqXHR.responseText);
       });
