@@ -29,6 +29,27 @@ export default Ember.Route.extend({
 
     displayError: function(errorMessage) {
       this.controllerFor('notifications').set('error', errorMessage);
+    },
+
+    openFeedback: function() {
+      this.set('controller.isGivingFeedback', true);
+    },
+
+    closeFeedback: function() {
+      this.set('controller.isGivingFeedback', false);
+    },
+
+    submitFeedback: function() {
+      var feedback = this.controllerFor('feedback'),
+          feedbackText = feedback.get('feedbackText');
+
+      request({
+        type: 'POST',
+        url: '/feedback',
+        data: { feedback_text: feedbackText }
+      }).then(function() {
+        feedback.set('hasGivenFeedback', true);
+      });
     }
   }
 });

@@ -5,6 +5,7 @@
     {{/if}}
 
     <li class="home">{{#link-to 'index'}}Home{{/link-to}}</li>
+    <li class="feedback"><a {{action 'openFeedback'}} href="#">Give feedback!</a></li>
 
     {{#if session.user}}
       <li class="logout"><a {{action 'logout'}} href="#">Logout</a></li>

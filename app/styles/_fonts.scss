@@ -45,10 +45,11 @@ form.login, form.registration {
   }
 }
 
+span.ditty { font-weight: bold; }
+
 p.introduction, div.no-current-track p {
   font-size: 1.8rem;
   color: #BF97DA;
-  span.ditty { font-weight: bold; }
 }
 
 #rooms {
@@ -103,3 +104,13 @@ p#footer {
   padding-right: 1rem;
 }
 
+#feedback {
+  font-size: 1.8rem;
+  p { color: #BF97DA; }
+
+  a.cancel-feedback {
+    color: #BF97DA;
+    font-weight: bold;
+    &:hover { color: white; }
+  }
+}

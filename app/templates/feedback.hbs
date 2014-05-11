@@ -1,0 +1,15 @@
+<div id="feedback">
+  {{#if hasGivenFeedback}}
+    <p>Thanks for your feedback!</p>
+  {{else}}
+    <p>
+      Hi! If you have a minute, please let me know what you think of
+      <span class="ditty">Ditty.me</span>, and how it could improve:
+    </p>
+
+    {{textarea value=feedbackText}}
+    <button {{action 'submitFeedback'}}>Submit</button>
+  {{/if}}
+
+  <a {{action 'closeFeedback'}} class="cancel-feedback" href="#">Close</a>
+</div>
