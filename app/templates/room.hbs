@@ -2,15 +2,24 @@
   {{music-file room=content track=currentTrack}}
 
   <div class="main">
-    {{#if currentTrack.coverImageUrl}}
-      <img class="album-cover" {{bind-attr src="currentTrack.coverImageUrl"}}>
-    {{else}}
-      <div class="album-cover not-found">Cover not found</div>
-    {{/if}}
+    {{#if currentTrack}}
+      {{#if currentTrack.coverImageUrl}}
+        <img class="album-cover" {{bind-attr src="currentTrack.coverImageUrl"}}>
+      {{else}}
+        <div class="album-cover not-found">Cover not found</div>
+      {{/if}}
 
-    <div class="playlist">
-      {{render 'tracks'}}
-      {{ view 'mp3-upload'}}
-    </div>
+      <div class="playlist">
+        {{render 'tracks'}}
+        {{ view 'mp3-upload'}}
+      </div>
+    {{else}}
+      <div class="no-current-track">
+        <p>It looks like nothing's playing yet. Upload a track to start
+        listening.</p>
+
+        {{view 'mp3-upload'}}
+      </div>
+    {{/if}}
   </div>
 </div>
