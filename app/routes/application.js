@@ -31,8 +31,8 @@ export default Ember.Route.extend({
       this.controllerFor('notifications').set('error', errorMessage);
     },
 
-    openFeedback: function() {
-      this.set('controller.isGivingFeedback', true);
+    toggleFeedback: function() {
+      this.toggleProperty('controller.isGivingFeedback');
     },
 
     closeFeedback: function() {
