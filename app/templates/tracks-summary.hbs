@@ -2,6 +2,8 @@
 
   {{#with currentTrack}}
     <div class="current-track">{{partial 'track'}}</div>
+  {{else}}
+    <div class="current-track empty">Nothing playing yet</div>
   {{/with}}
 
 </div>

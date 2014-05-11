@@ -24,6 +24,11 @@ html {
   }
 }
 
+.current-track.empty {
+  font-style: italic;
+  color: #BF97DA;
+}
+
 table.tracks {
   color: white;
   font-size: 1.4rem;
