@@ -30,6 +30,11 @@ var Whistler = Html5Audio.extend(SocketMixin, {
     this.off('room_current_time', null, 'setInitialTime');
   }.on('room_current_time'),
 
+  leaveRoom: function() {
+    var roomId = this.get('roomId');
+    this.emit('leave_room');
+  }.on('didLeaveRoom'),
+
   emitGetCurrentTime: function() {
     this.emit('get_current_time');
   }.on('loadedmetadata'),

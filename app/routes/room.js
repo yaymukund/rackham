@@ -15,6 +15,11 @@ export default Ember.Route.extend({
     this._super(controller, model);
   },
 
+  deactivate: function() {
+    var roomId = this.get('controller.id');
+    Whistler.find(roomId).trigger('didLeaveRoom')
+  },
+
   actions: {
     createTrack: function(attributes) {
       var track = this.get('controller.tracks').createRecord(attributes);

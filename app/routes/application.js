@@ -13,7 +13,8 @@ export default Ember.Route.extend({
 
   actions: {
     logout: function() {
-      var session = this.controllerFor('session');
+      var self = this,
+          session = self.controllerFor('session');
 
       if (!session.get('isAuthenticated')) {
         return;
@@ -24,6 +25,7 @@ export default Ember.Route.extend({
         url: '/session'
       }).then(function(response) {
         session.set('user', null);
+        self.transitionTo('index');
       });
     },
 
